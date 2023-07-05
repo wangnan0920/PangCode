@@ -1,0 +1,40 @@
+#include <iostream>
+#include <string>
+using namespace std;
+struct node
+{
+	int data;
+	node* next;
+};
+int main()
+{
+	int m, n;
+	cin >> n >> m;
+	node *head,*p,*q;
+	head = new node;
+	q = head;
+	for (int i = 1; i <= n; i++)
+	{
+		p = new node;
+		p->data = i;
+		p->next = NULL;
+		q->next = p;
+		q = p;
+	}
+	q->next = head->next;
+	p = q = head->next;
+	while (n-- > 0)
+	{
+		for (int i = 1; i < m; i++)
+		{
+			p = q;
+			q = q->next;
+		}
+		cout << q->data << " ";
+		p->next = q->next;
+		q = p->next;
+	}
+
+
+	return 0;
+}
