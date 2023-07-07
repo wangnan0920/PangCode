@@ -1,0 +1,41 @@
+#include<bits/stdc++.h>
+using namespace std;
+int pop();
+void push(int e);
+int quesize();
+int main()
+{
+    int a[10]={0};
+    int head=1,rear=1;
+    int i;
+    for(i=1;i<10;i++)
+    {
+        if(rear+1==head)
+    {
+        break;  //队列已经满了
+    }
+       a[rear]=i+100;
+       rear++;
+      if(rear>=10)
+        rear%=10;
+    }
+    cout<<"总数:"<<(rear-head+10)%10<<endl;
+   for(i=1;i<=10;i++)
+    {
+        int e;
+    if(head==rear)
+    {
+        break;
+    }
+    else {
+            e=a[head++];
+            cout<<e<<"  ";
+         }
+
+        if(head>=10)
+    {
+        head%=10;
+    }
+    }
+	return 0;
+}
