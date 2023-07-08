@@ -1,0 +1,54 @@
+#include<bits/stdc++.h>
+using namespace std;
+struct  tree
+{
+    int data;
+    tree *lp,*rp;
+
+
+}*t;
+void  travetree(tree *T)
+{
+    if(T==NULL)
+    {
+        return;
+    }
+    else
+    {
+        cout<<T->data;
+        travetree(T->lp);
+        travetree(T->rp);
+        return;
+
+    }
+
+
+}
+void createtree(tree *T)
+{
+    char i;
+    cin>>i;
+    if(i=='#')
+    {
+        T=NULL;
+        return;
+    }
+    else
+    {
+        T=new tree;
+        T->data=i;
+        createtree(T->lp);
+        createtree(T->rp);
+        return;
+    }
+
+}
+int main()
+{
+
+
+    createtree(t);
+    travetree(t);
+
+    return 0;
+}
