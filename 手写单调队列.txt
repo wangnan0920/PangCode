@@ -17,7 +17,7 @@ int main()
         {
         cout<<0<<endl;
         }
-        while(head!=rear&&a[i]<a[q[rear-1]])
+        while(head!=rear&&a[i]<a[q[rear-1]])//将其与队尾作比较 比队尾小则弹出队尾，保持队内由小到大排列
             rear--;
             q[rear++]=i;
             while(head!=rear&&q[head]<=i-m)
