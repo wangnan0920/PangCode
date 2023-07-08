@@ -1,54 +1,30 @@
 #include<bits/stdc++.h>
 using namespace std;
-struct  tree
-{
-    int data;
-    tree *lp,*rp;
-
-
-}*t;
-void  travetree(tree *T)
-{
-    if(T==NULL)
-    {
-        return;
-    }
-    else
-    {
-        cout<<T->data;
-        travetree(T->lp);
-        travetree(T->rp);
-        return;
-
-    }
-
-
-}
-void createtree(tree *T)
-{
-    char i;
-    cin>>i;
-    if(i=='#')
-    {
-        T=NULL;
-        return;
-    }
-    else
-    {
-        T=new tree;
-        T->data=i;
-        createtree(T->lp);
-        createtree(T->rp);
-        return;
-    }
-
-}
+int a[2000010],q[2000010];
 int main()
 {
+    int head=0,rear=0;
+    int n,m;
+    cin>>n>>m;
+    for(int i=1;i<=n;i++)
+    {
+        cin>>a[i];
+    }
 
+    for(int i=1;i<n;i++)
+    {
+        if(head==rear)
+        {
+        cout<<0<<endl;
+        }
+        while(head!=rear&&a[i]<a[q[rear-1]])
+            rear--;
+            q[rear++]=i;
+            while(head!=rear&&q[head]<=i-m)
+                head++;
+            printf("%d\n",a[q[head]]);
 
-    createtree(t);
-    travetree(t);
+    }
 
     return 0;
 }
