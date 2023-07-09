@@ -1,0 +1,29 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    stack<int>s;
+    int a[300000],ans[30000];
+    int n,j;
+    cin>>n;
+    j=n;
+    for(int i=1;i<=n;i++)
+        scanf("%d",&a[i]);
+    for(;n>0;n--)
+{
+
+        while(!s.empty()&&a[n]>=a[s.top()])
+        s.pop();
+        if(s.empty())
+        ans[n]=0;
+        else ans[n]=s.top();
+        s.push(n);
+
+
+
+}
+    for(int i=1;i<=j;i++)
+    printf("%d ",ans[i]);
+
+    return 0;
+}
