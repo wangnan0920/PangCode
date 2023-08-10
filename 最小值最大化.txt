@@ -1,0 +1,50 @@
+#include<stdio.h>
+#include<math.h>
+#define e 1e-6
+double are[10010]={0};
+double PI=acos(-1.0);
+int n,m;
+bool h(double mi)
+{
+       int sum=0;
+    for(int i=0;i<n;i++)
+    {
+    sum+=int(are[i]/mi);
+    }
+    if(sum>=m) return true;
+    return false;
+
+
+}
+int main()
+{
+
+    int t;
+    scanf("%d",&t);
+    while(t--)
+    {
+        float maxx=0;
+        scanf("%d%d",&n,&m);
+        m++;
+        for(int i=0;i<n;i++)
+        {
+            int r;
+            scanf("%d",&r);
+            are[i]=r*PI*r;
+            if(are[i]>maxx) maxx=are[i];
+        }
+
+        double mid,left=0.0,right=maxx;
+       for(int i=0;i<100;i++)
+        {
+            mid=left+(right-left)/2;
+            if(h(mid))
+                left=mid;
+            else right=mid;
+
+        }
+        printf("%.4f\n",left);
+    }
+    return 0;
+}
+
