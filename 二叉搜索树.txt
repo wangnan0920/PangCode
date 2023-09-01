@@ -1,0 +1,80 @@
+#include<iostream>
+#include<bits/stdc++.h>
+using namespace std;
+typedef struct BSTNode
+{
+
+    int key;
+    struct BSTNode *l,*r;
+
+}BSTNode;
+int Sear(BSTNode *T,int key)
+{
+    if(!T) return 0;
+    if(key==T->key) return 1;
+    else if(key>T->key)
+         return Sear(T->r,key);
+    else if(key<T->key)
+       return Sear(T->l,key);
+}
+void inser(BSTNode* &T,int key)
+{
+    if(!T)
+    {
+        BSTNode *s;
+        s=new BSTNode;
+        s->key=key;
+        s->l=NULL;
+        s->r=NULL;
+        T=s;
+    }
+    else if(key<T->key)
+        inser(T->l,key);
+    else if(key>T->key)
+        inser(T->r,key);
+
+}
+
+void createbst(BSTNode* &T)
+{
+    T=NULL;
+    int key;
+    cin>>key;
+    while(key!=-1)
+    {
+        inser(T,key);
+        cin>>key;
+    }
+
+
+
+
+}
+void bianlit(BSTNode* T)
+{
+        if(!T) return ;
+         bianlit(T->l);
+         cout<<T->key<<"  ";
+         bianlit(T->r);
+
+
+}
+int main()
+{
+    BSTNode *T;
+    T=new BSTNode;
+    createbst(T);
+    bianlit(T);
+    cout<<endl;
+    cout<<"输入您要查找的数字"<<endl;
+    int key;
+    cin>>key;
+    if(Sear(T,key))
+    {
+
+        cout<<"查找成功"<<endl;
+    }
+    else cout<<"没有此数字"<<endl;
+
+    return 0;
+}
